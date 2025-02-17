@@ -36,6 +36,7 @@ const UserStore = create((set) => ({
       const userData = await fetchData();
       set({ user: userData, loading: false });
     } catch (err) {
+        
       set({ error: err.message || "Failed to fetch user", loading: false });
     }
   },
