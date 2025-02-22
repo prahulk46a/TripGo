@@ -56,7 +56,7 @@ const TravelGrid = () => {
             key={index}
             sx={{
               position: "relative",
-              height: 400,
+              height: { xs: 300, md: 400, lg: 450 },
               borderRadius: 4,
               overflow: "hidden",
               cursor: "pointer",
