@@ -4,9 +4,9 @@ import {
   ExpandLess,
   ExpandMore,
   Menu as MenuIcon,
+  Person as PersonIcon, // Add a login icon
   Phone as PhoneIcon,
   Search as SearchIcon,
-  Person as PersonIcon, // Add a login icon
 } from "@mui/icons-material";
 import {
   AppBar,
