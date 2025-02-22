@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import nordic from "../../../assets/NordicSea.jpg";
+
 import bgstar from "../../../assets/bgstar.png";
+import nordic from "../../../assets/NordicSea.jpg";
 
 function NordicSection() {
   const items = [
