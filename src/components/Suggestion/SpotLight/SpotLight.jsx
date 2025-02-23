@@ -16,7 +16,9 @@ const TravelGrid = () => {
   return (
     <Box
       sx={{
-        p: { xs: 2, md: 4 },
+        mr: { xs: 2, md: 4, xl: 14 },
+        ml: { xs: 2, md: 4, xl: 14 },
+        mt: { xs: 2, md: 6 },
         overflow: "hidden",
       }}
     >

@@ -38,7 +38,13 @@ function NordicSection() {
   ];
 
   return (
-    <Box sx={{ p: { xs: 2, md: 4 } }}>
+    <Box
+      sx={{
+        mr: { xs: 2, md: 4, xl: 14 },
+        ml: { xs: 2, md: 4, xl: 14 },
+        mt: { xs: 2, md: 6 },
+      }}
+    >
       <Typography
         variant="h6"
         sx={{
@@ -120,7 +126,7 @@ function NordicSection() {
             {item.dark && (
               <Box
                 component="img"
-                src={bgstar} // Replace with actual bgstar image
+                src={bgstar}
                 alt=""
                 sx={{
                   position: "absolute",
