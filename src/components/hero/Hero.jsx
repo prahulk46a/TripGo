@@ -1,17 +1,23 @@
 import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
 
-import heroImg from "../../assets/image.png";
-const Hero = () => {
+const Hero = ({ image, text }) => {
   return (
-    <Box sx={{ width: "100%", position: "relative", overflow: "hidden" }}>
-      <Grid container justifyContent="center">
+    <Box
+      sx={{
+        width: "100%",
+        position: "relative",
+        overflow: "hidden",
+        marginBottom: "5px",
+      }}
+    >
+      <Grid container alignContent="center" justifyContent="center">
         <Grid item xs={12} sx={{ position: "relative" }}>
           <Card sx={{ boxShadow: "none" }}>
             <CardMedia
               component="img"
-              image={heroImg}
-              alt="Bonfire gathering"
-              sx={{ width: "100vw", height: "70vh", borderRadius: 0 }}
+              image={image}
+              alt="Hero Image"
+              sx={{ width: "100vw", height: "70vh", borderRadius: "0" }}
             />
             <Box
               sx={{
@@ -26,8 +32,7 @@ const Hero = () => {
               }}
             >
               <Typography variant="h3" fontWeight="normal" color="white">
-                {/* Gear up for Great Outdoors® */}
-                GEAR UP FOR GREAT OUTDOORS®
+                {text}
               </Typography>
             </Box>
           </Card>

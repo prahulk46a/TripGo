@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 
-const BASE_URL = ""; // Replace with actual API URL
+const BASE_URL = "http://localhost:3001/";
 
-const useFetch = (endpoint, method = "GET") => {
+const UseFetch = (endpoint, method = "GET") => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -28,4 +28,4 @@ const useFetch = (endpoint, method = "GET") => {
   return { fetchData, loading, error };
 };
 
-export default useFetch;
+export default UseFetch;
