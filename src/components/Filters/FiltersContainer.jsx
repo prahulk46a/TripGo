@@ -7,7 +7,7 @@ import SortBy from "./SortBy";
 
 const FilterContainer = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("RP"));
   const [accommodationType, setAccommodationType] = useState("Tents");
 
   return (

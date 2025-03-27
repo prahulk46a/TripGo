@@ -13,7 +13,7 @@ import {
 
 const SocialSection = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("RP"));
 
   return (
     <Box
@@ -26,7 +26,7 @@ const SocialSection = () => {
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="stretch">
           {/* Left Section */}
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} RP={5}>
             <Box>
               <Typography
                 variant="h5"
@@ -79,7 +79,7 @@ const SocialSection = () => {
 
           {/* Vertical Separator Line */}
           {!isMobile && (
-            <Grid item xs={12} sm={1}>
+            <Grid item xs={12} RP={1}>
               <Box
                 sx={{
                   width: "1px", // Vertical line width
@@ -92,7 +92,7 @@ const SocialSection = () => {
           )}
 
           {/* Right Section */}
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} RP={6}>
             <Box>
               <Typography
                 variant="h6"

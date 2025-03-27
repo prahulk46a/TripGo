@@ -1,29 +1,31 @@
-// src/components/SignIn.js
-
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SignIn = () => {
+const SignUp = () => {
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSignIn = () => {
-    console.log({ email, password, rememberMe });
+  const handleSignUp = () => {
+    console.log({ fullName, email, password });
   };
+
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
-      {/* Left Section (Form) */}
+      {/* Left Section (Image) */}
+      <Grid
+        item
+        xs={false}
+        sm={6}
+        sx={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1586022045497-31fcf76fa6cc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      {/* Right Section (Form) */}
       <Grid
         item
         xs={12}
@@ -42,10 +44,20 @@ const SignIn = () => {
         }}
       >
         <Box sx={{ maxWidth: 400, textAlign: "center" }}>
-          <Typography variant="h4">Welcome back</Typography>
+          <Typography variant="h4">Create an Account</Typography>
           <Typography variant="body2" sx={{ mb: 3 }}>
-            Please enter your details
+            Join us today!
           </Typography>
+          <TextField
+            fullWidth
+            label="Full Name"
+            margin="normal"
+            variant="outlined"
+            InputLabelProps={{ style: { color: "white" } }}
+            sx={{ input: { color: "white" }, bgcolor: "#222", borderRadius: 1 }}
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
           <TextField
             fullWidth
             label="Email"
@@ -67,55 +79,24 @@ const SignIn = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-              />
-            }
-            label={
-              <Typography variant="body2">Remember for 30 days</Typography>
-            }
-          />
           <Button
             fullWidth
             variant="contained"
             sx={{ mt: 2, bgcolor: "#7a5af5" }}
-            onClick={handleSignIn}
+            onClick={handleSignUp}
           >
-            Sign In
-          </Button>
-          <Button
-            fullWidth
-            variant="outlined"
-            sx={{ mt: 1, color: "white", borderColor: "white" }}
-          >
-            Sign in with Google
+            Sign Up
           </Button>
           <Typography variant="body2" sx={{ mt: 2 }}>
-            Don't have an account?{" "}
-            <Link to="/signup" style={{ color: "#7a5af5" }}>
-              Sign up
+            Already have an account?{" "}
+            <Link to="/login" style={{ color: "#7a5af5" }}>
+              Sign in
             </Link>
           </Typography>
         </Box>
       </Grid>
-
-      {/* Right Section (Image) */}
-      <Grid
-        item
-        xs={false}
-        sm={6}
-        sx={{
-          backgroundImage:
-            "url(https://images.pexels.com/photos/4095483/pexels-photo-4095483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
     </Grid>
   );
 };
 
-export default SignIn;
+export default SignUp;

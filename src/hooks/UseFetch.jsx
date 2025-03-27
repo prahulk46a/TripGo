@@ -1,31 +1,26 @@
-import axios from "axios";
-import { useCallback, useState } from "react";
-
-const BASE_URL = "http://localhost:3001/";
+import { useCallback, useEffect, useState } from "react";
+// Import Zustand store
 
 const UseFetch = (endpoint, method = "GET") => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const fetchDataFromStore = useFetchStore((state) => state.fetchData);
+  const [state, setState] = useState({
+    loading: false,
+    data: null,
+    error: null,
+  });
 
   const fetchData = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await axios({
-        url: `${BASE_URL}${endpoint}`,
-        method,
-      });
+    setState({ loading: true, data: null, error: null });
 
-      return response.data;
-    } catch (err) {
-      setError(err.message);
-      return null;
-    } finally {
-      setLoading(false);
-    }
+    const result = await fetchDataFromStore(endpoint, method);
+    setState(result);
   }, [endpoint, method]);
 
-  return { fetchData, loading, error };
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { fetchData, ...state };
 };
 
 export default UseFetch;

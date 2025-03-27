@@ -30,13 +30,12 @@ const UserStore = create((set) => ({
   // 🔹 Fetch Current User
   fetchUser: async () => {
     set({ loading: true, error: null });
-    const { fetchData } = UseFetch("/auth/me", "GET");
+    const { fetchData } = UseFetch("/auth", "GET");
 
     try {
       const userData = await fetchData();
       set({ user: userData, loading: false });
     } catch (err) {
-        
       set({ error: err.message || "Failed to fetch user", loading: false });
     }
   },

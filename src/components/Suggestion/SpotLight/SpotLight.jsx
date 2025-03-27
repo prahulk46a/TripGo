@@ -46,7 +46,7 @@ const TravelGrid = () => {
           display: "grid",
           gridTemplateColumns: {
             xs: "1fr",
-            sm: "1fr 1fr",
+            RP: "1fr 1fr",
             md: "repeat(4, 1fr)",
           },
           gap: 3,

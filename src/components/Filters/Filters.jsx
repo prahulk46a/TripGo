@@ -24,7 +24,7 @@ import FilterOption from "./FilterOptions"; // Import the reusable filter option
 
 const Filters = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("RP"));
 
   const [open, setOpen] = useState(false);
   const [priceRange, setPriceRange] = useState("");
@@ -359,7 +359,7 @@ const Filters = () => {
               </Typography>
               <Grid container spacing={2}>
                 {moreFiltersOptions.map((option) => (
-                  <Grid item xs={12} sm={6} md={4} lg={2} key={option.value}>
+                  <Grid item xs={12} RP={6} md={4} lg={2} key={option.value}>
                     <FormControlLabel
                       control={
                         <Checkbox

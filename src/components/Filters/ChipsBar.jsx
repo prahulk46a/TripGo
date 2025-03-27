@@ -6,7 +6,7 @@ import CustomChip from "./CustomChip"; // Import the reusable chip component
 
 const ChipsBar = ({ accommodationType, setAccommodationType }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("RP"));
   const scrollContainerRef = useRef(null);
   const [showScrollToStart, setShowScrollToStart] = useState(false);
 
@@ -95,7 +95,7 @@ const ChipsBar = ({ accommodationType, setAccommodationType }) => {
             "&:hover": {
               opacity: 1,
             },
-            display: { xs: "flex", sm: "none" },
+            display: { xs: "flex", RP: "none" },
           }}
         >
           <KeyboardArrowUpIcon sx={{ transform: "rotate(-90deg)" }} />
