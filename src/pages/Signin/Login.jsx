@@ -1,5 +1,3 @@
-// src/components/SignIn.js
-
 import {
   Box,
   Button,
@@ -14,16 +12,29 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    remember: false,
+  });
 
-  const handleSignIn = () => {
-    console.log({ email, password, rememberMe });
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    setFormData({
+      email: "",
+      password: "",
+      remember: false,
+    });
+  };
+
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
-      {/* Left Section (Form) */}
       <Grid
         item
         xs={12}
@@ -46,46 +57,64 @@ const SignIn = () => {
           <Typography variant="body2" sx={{ mb: 3 }}>
             Please enter your details
           </Typography>
-          <TextField
-            fullWidth
-            label="Email"
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{ style: { color: "white" } }}
-            sx={{ input: { color: "white" }, bgcolor: "#222", borderRadius: 1 }}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{ style: { color: "white" } }}
-            sx={{ input: { color: "white" }, bgcolor: "#222", borderRadius: 1 }}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-              />
-            }
-            label={
-              <Typography variant="body2">Remember for 30 days</Typography>
-            }
-          />
-          <Button
-            fullWidth
-            variant="contained"
-            sx={{ mt: 2, bgcolor: "#7a5af5" }}
-            onClick={handleSignIn}
-          >
-            Sign In
-          </Button>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              fullWidth
+              label="Email"
+              margin="normal"
+              variant="outlined"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              autoComplete="email"
+              InputLabelProps={{ style: { color: "white" } }}
+              sx={{
+                input: { color: "white" },
+                bgcolor: "#222",
+                borderRadius: 1,
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Password"
+              type="password"
+              margin="normal"
+              variant="outlined"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              autoComplete="current-password"
+              InputLabelProps={{ style: { color: "white" } }}
+              sx={{
+                input: { color: "white" },
+                bgcolor: "#222",
+                borderRadius: 1,
+              }}
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  sx={{ color: "white", "&.Mui-checked": { color: "white" } }}
+                  name="remember"
+                  checked={formData.remember}
+                  onChange={handleChange}
+                />
+              }
+              label={
+                <Typography variant="body2" sx={{ color: "white" }}>
+                  Remember for 30 days
+                </Typography>
+              }
+            />
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 2, bgcolor: "#7a5af5" }}
+              type="submit"
+            >
+              Sign In
+            </Button>
+          </form>
           <Button
             fullWidth
             variant="outlined"
@@ -94,22 +123,20 @@ const SignIn = () => {
             Sign in with Google
           </Button>
           <Typography variant="body2" sx={{ mt: 2 }}>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link to="/signup" style={{ color: "#7a5af5" }}>
               Sign up
             </Link>
           </Typography>
         </Box>
       </Grid>
-
-      {/* Right Section (Image) */}
       <Grid
         item
         xs={false}
         sm={6}
         sx={{
           backgroundImage:
-            "url(https://images.pexels.com/photos/4095483/pexels-photo-4095483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+            "url(https://images.pexels.com/photos/2108845/pexels-photo-2108845.jpeg?cs=srgb&dl=pexels-mohamedelaminemsiouri-2108845.jpg&fm=jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
